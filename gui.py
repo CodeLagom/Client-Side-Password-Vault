@@ -40,7 +40,7 @@ def load_window():                                                              
     enter_pass_window = canvas.create_window(60,230, anchor=NW, window=enter_pass)
 
     #submit_button                                                                                                      #button widget , here command=submit means when we press this button submit method will be called
-    mButton=Button(window,text='LOGIN',bg='green',command=lambda : submit(window,mPass))
+    mButton=Button(window,text='LOGIN',bg='green',command=lambda : submit(window,mUsername,mPass))
     mButton.configure(width=10, activebackground="#33B5E5", relief=RAISED)
     mButton_window = canvas.create_window(130, 280, anchor=NW, window=mButton)
 
@@ -65,8 +65,8 @@ def load_window():                                                              
     window.mainloop()
                                                                                                                         # keeps window open till not closed by user
 
-def submit(win,paswd):
-    return_pass(paswd)
+def submit(win,uname,upass):
+    return_pass(uname,upass)
     win.destroy()
     print("Submit button pressed")
     window = Tk()
@@ -85,8 +85,9 @@ def submit(win,paswd):
     label_user_window = canvas.create_window(125, 120, anchor=NW, window=label_user)
     window.mainloop()
 
-def return_pass(en):
-    print(en.get())
+def return_pass(uname,upass):
+    print(uname.get())
+    print(upass.get())
 
 def return_signup_username(win,uname,upass,cpass,email,mob):
     print(uname.get())
