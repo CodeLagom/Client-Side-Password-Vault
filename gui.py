@@ -101,7 +101,7 @@ def signup(win):
     canvas.create_image(200, 200, image=photo)
 
     # HELLO USERNAME
-    label_user = Label(window, text="Hello, Username", font=("Hekvetica", 25), fg='White',bg='#2A2A2A')
+    label_user = Label(window, text="Hello, User!", font=("Hekvetica", 25), fg='White',bg='#2A2A2A')
     label_user.configure(activebackground="#33B5E5", relief=FLAT)
     label_user_window = canvas.create_window(130, 60, anchor=NW, window=label_user)
 
@@ -164,7 +164,7 @@ def signup(win):
 
     mSignupButton = Button(window, text='SIGNUP', bg='green', command=signuppage)
     mSignupButton.configure(width=15, activebackground="#33B5E5", relief=RAISED)
-    mSignupButton_window = canvas.create_window(250, 360, anchor=NW, window=mSignupButton)
+    mSignupButton_window = canvas.create_window(200, 360, anchor=NW, window=mSignupButton)
 
 
     window.mainloop()
