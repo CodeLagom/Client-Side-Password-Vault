@@ -86,7 +86,14 @@ def submit(win,paswd):
     window.mainloop()
 
 def return_pass(en):
-        print(en.get())
+    print(en.get())
+
+def return_signup_username(win,uname,upass,cpass,email,mob):
+    print(uname.get())
+    print(upass.get())
+    print(cpass.get())
+    print(email.get())
+    print(mob.get())
 
 def signup(win):
     win.destroy()
@@ -162,7 +169,8 @@ def signup(win):
 
     # signup_button
 
-    mSignupButton = Button(window, text='SIGNUP', bg='green', command=signuppage)
+    mSignupButton = Button(window, text='SIGNUP', bg='green', command= lambda : signuppage(window,mPass,mPassword,
+                                                                                mConfrimpass,mEmail,mNumber))
     mSignupButton.configure(width=15, activebackground="#33B5E5", relief=RAISED)
     mSignupButton_window = canvas.create_window(200, 360, anchor=NW, window=mSignupButton)
 
@@ -176,7 +184,9 @@ def forgotpassword():
 def otp():
     print("OTP button pressed")
 
-def signuppage():
+def signuppage(win,uname,upass,cpass,email,mob):
+    return_signup_username(win,uname,upass,cpass,email,mob)
+    win.destroy()
     print("Signuppage button pressed")
 
 load_window()
