@@ -1,12 +1,12 @@
 import hashlib
 
-def encrypt_file():
+def encrypt_file():                                                 #encrypt file method
     print('this is enc executed')
     f=open('hakuna.txt','rb')
     texttoenc=f.read()
     f.close()
     texttoenc=bytearray(texttoenc)
-    key = 48
+    key = 64
     for index,value in enumerate(texttoenc):
         texttoenc[index]=value^key
 
@@ -16,13 +16,14 @@ def encrypt_file():
     f.close()
     print('encryption is done')
 
-def decrypt_file():
+
+def decrypt_file():                                                  #decrypt file method
     print('this is decr executed')
     f = open('hakuna.txt', 'rb')
     texttoenc = f.read()
     f.close()
     texttoenc = bytearray(texttoenc)
-    key = 48
+    key = 64
     for index, value in enumerate(texttoenc):
         texttoenc[index] = value ^ key
     #print(texttoenc)
@@ -32,28 +33,54 @@ def decrypt_file():
     print('decryption is done')
 
 
-def hashin_method(passwd):
+def hashin_method(passwd):                                           #password hash method
     hash_o=hashlib.sha3_512(passwd)
-    print(hash_o.hexdigest())
+    #print(hash_o.hexdigest())
     f=open('hakuna.txt','w')
     f.write(hash_o.hexdigest())
     f.close()
     encrypt_file()
 
+def enter_new():                                                     #enter items method
+    f=open('hakuna.txt','a')
+    print('enter item name: ')
+    nametext=input()
+    print('enter password: ')
+    pss=input()
+    str_entry='\n'+nametext+'\t\t'+pss
+    f.write(str_entry)
+    f.close()
+    print('done')
+    print('Add More ?')
+    if input() == 'yes':
+        enter_new()
+    else:
+        return
 
-res=input('signup or login')
+res=input('signup or login')                                             #tkinter first page
 if res == 'signup':
     passwd=input('enter password').encode('utf-8')
     hashin_method(passwd)
-if res == 'login':
+
+elif res == 'login':
     decrypt_file()
-    hash_n=hashlib.sha3_512(input('enter your password').encode('utf-8'))
+    hash_n=hashlib.sha3_512(input('enter your password').encode('utf-8'))   #pass password from tkinter here
     f=open('hakuna.txt','r')
-    if f.read() == hash_n.hexdigest():
-        print('You are in')
+    if f.readline().strip() == hash_n.hexdigest():
+        f.close()
+        print('You are in')                                              #tkinter loginpage
+        print('1- enter new item\n 2-see your list ')
+        resp=input()
+        if resp == '1':                                                  #tkinter enter new item page
+            enter_new()
+        if resp == '2':                                                  #tkinter show list page
+            f=open('hakuna.txt')
+            lines=f.readlines()
+            for i in range(1,len(lines)):
+                print (lines[i])                                         #line by line
         encrypt_file()
-    else:
+    else:                                                                 #tkinter exit
         print('Failed')
 else:
-    print('Invalid Response')
+    print('Invalid Response')                                            #tkinter exit
 
