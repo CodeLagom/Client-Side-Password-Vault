@@ -77,10 +77,17 @@ def submit(win,uname,upass,fromwho):
            canvas.create_image(200, 200, image=photo)
 
            canvas.pack()
-           # Username
-           label_user = Label(window, text="LOGGED IN SUCESSFULLY!", font=("Hekvetica", 10), fg='blue')
-           label_user.configure(activebackground="#33B5E5", relief=FLAT, width=30)
-           label_user_window = canvas.create_window(125, 120, anchor=NW, window=label_user)
+
+           # showlistbutton
+           mShow = Button(window, text='DISPLAY THE EXISTING LIST', bg='green')
+           mShow.configure(width=23, activebackground="#33B5E5", relief=RAISED)
+           mShow_window = canvas.create_window(160, 100, anchor=NW, window=mShow)
+
+           # enterlistbutton
+           mEnter = Button(window, text="ADD ITEM TO LIST", bg='green')
+           mEnter.configure(width=23, activebackground="#33B5E5", relief=RAISED)
+           mEnter_window = canvas.create_window(160, 160, anchor=NW, window=mEnter)
+
            window.mainloop()
        else:
            exit()
