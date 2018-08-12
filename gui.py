@@ -2,43 +2,120 @@ from tkinter import *
 from PIL import Image, ImageTk
 import smtplib
 import pyotp
-import time
+import hashlib
 
 #########################################################################################################################
+def encrypt_file():                                                 #encrypt file method
+    print('this is enc executed')
+    f=open('hakuna.txt','rb')
+    texttoenc=f.read()
+    f.close()
+    texttoenc=bytearray(texttoenc)
+    key = 64
+    for index,value in enumerate(texttoenc):
+        texttoenc[index]=value^key
+
+    f=open('hakuna.txt','wb')
+    f.write(texttoenc)
+    #print(texttoenc)
+    f.close()
+    print('encryption is done')
+
+def decrypt_file():                                                  #decrypt file method
+    print('this is decr executed')
+    f = open('hakuna.txt', 'rb')
+    texttoenc = f.read()
+    f.close()
+    texttoenc = bytearray(texttoenc)
+    key = 64
+    for index, value in enumerate(texttoenc):
+        texttoenc[index] = value ^ key
+    #print(texttoenc)
+    f = open('hakuna.txt', 'wb')
+    f.write(texttoenc)
+    f.close()
+    print('decryption is done')
+
+
+
+def hashin_method(passwd):                                           #password hash method
+    hash_o=hashlib.sha3_512(passwd)
+    #print(hash_o.hexdigest())
+    f=open('hakuna.txt','w')
+    f.write(hash_o.hexdigest())
+    f.close()
+    encrypt_file()
 
 def return_pass(uname,upass):
     print(uname.get())
     print(upass.get())
+    decrypt_file()
+    hash_n = hashlib.sha3_512(upass.get().encode('utf-8'))  # pass password from tkinter here
+    f = open('hakuna.txt', 'r')
+    if f.readline().strip() == hash_n.hexdigest():
+        f.close()
+        print('You are in')  # tkinter loginpage
+        print('1- enter new item\n 2-see your list ')
+        return True
+    else:
+        encrypt_file()
+    return False
 
 def submit(win,uname,upass,fromwho):
 
     if fromwho == 'login':
-        return_pass(uname,upass)
+       if return_pass(uname,upass):
+           win.destroy()
+           print("Submit button pressed")
+           window = Tk()
+           f1 = Frame(window, height=0, width=250)
+           f1.pack()
+           image = Image.open('tkbg.jpg')
+           photo = ImageTk.PhotoImage(image)
+           window.title("Client Side Password Vault")
+           canvas = Canvas(window, width=500, height=400)
+           canvas.create_image(200, 200, image=photo)
+
+           canvas.pack()
+           # Username
+           label_user = Label(window, text="LOGGED IN SUCESSFULLY!", font=("Hekvetica", 10), fg='blue')
+           label_user.configure(activebackground="#33B5E5", relief=FLAT, width=30)
+           label_user_window = canvas.create_window(125, 120, anchor=NW, window=label_user)
+           window.mainloop()
+       else:
+           exit()
     if fromwho == 'otp':
-        pass
+        win.destroy()
+        print("Submit button pressed")
+        window = Tk()
+        f1 = Frame(window, height=0, width=250)
+        f1.pack()
+        image = Image.open('tkbg.jpg')
+        photo = ImageTk.PhotoImage(image)
+        window.title("Client Side Password Vault")
+        canvas = Canvas(window, width=500, height=400)
+        canvas.create_image(200, 200, image=photo)
 
-    win.destroy()
-    print("Submit button pressed")
-    window = Tk()
-    f1 = Frame(window, height=0, width=250)
-    f1.pack()
-    image = Image.open('tkbg.jpg')
-    photo = ImageTk.PhotoImage(image)
-    window.title("Client Side Password Vault")
-    canvas = Canvas(window, width=500,height=400)
-    canvas.create_image(200, 200, image=photo)
+        canvas.pack()
+        # Username
+        label_user = Label(window, text="LOGGED IN SUCESSFULLY!", font=("Hekvetica", 10), fg='blue')
+        label_user.configure(activebackground="#33B5E5", relief=FLAT, width=30)
+        label_user_window = canvas.create_window(125, 120, anchor=NW, window=label_user)
+        window.mainloop()
 
-    canvas.pack()
-    # Username
-    label_user = Label(window, text="LOGGED IN SUCESSFULLY!", font=("Hekvetica", 10),fg='blue')
-    label_user.configure(activebackground="#33B5E5", relief=FLAT, width=30)
-    label_user_window = canvas.create_window(125, 120, anchor=NW, window=label_user)
-    window.mainloop()
+
 
 def return_signup_username(win,uname,upass,cpass,email,mob):
     print(uname.get())
     print(upass.get())
     print(cpass.get())
+
+    if upass.get()!=cpass.get():
+        exit()
+    else:
+        passwd=upass.get().encode('utf-8')
+        hashin_method(passwd)
+
     print(email.get())
     f=open('email.txt','w')
     f.write(email.get())
@@ -92,9 +169,9 @@ def load_window():                                                              
     canvas.pack()                                                                                                       # pack() method adds the widget into our window
 
     #Username
-    label_user=Label(window,text="Hello, Username",font=("Hekvetica",25),fg='White',bg='#2A2A2A')                       #label widget , fg means foreground color, bg means background color
+    label_user=Label(window,text="Open Vault",font=("Hekvetica",25),fg='White',bg='#2A2A2A')                       #label widget , fg means foreground color, bg means background color
     label_user.configure(activebackground="#33B5E5",relief=FLAT)                                                        #the hex color value doesnt make sense to me as it works fine without it
-    label_user_window=canvas.create_window(125,120,anchor=NW,window=label_user)                                         #we add the widget over canvas rather than directly window because if we add
+    label_user_window=canvas.create_window(165,120,anchor=NW,window=label_user)                                         #we add the widget over canvas rather than directly window because if we add
                                                                                                                         #directly to window it would get hidden behind canvas
     # Enter Username                                                                                                    #label widget
     enter_username = Label(window, text="Username", font=("TimesNewRoman", 10), fg='grey', bg='black')
@@ -178,7 +255,7 @@ def signup(win):
     mPassword_window = canvas.create_window(185, 180, anchor=NW, window=mPassword)
 
     # Enter Pass
-    enter_pass = Label(window, text="Enter Password", font=("TimesNewRoman", 10), fg='grey', bg='black')
+    enter_pass = Label(window, text="Enter Password *", font=("TimesNewRoman", 10), fg='grey', bg='black')
     enter_pass.configure(relief=FLAT)
     enter_pass_window = canvas.create_window(60, 180, anchor=NW, window=enter_pass)
 
@@ -189,7 +266,7 @@ def signup(win):
     mConfrimpass_window = canvas.create_window(185, 220, anchor=NW, window=mConfrimpass)
 
     # Enter confirm Pass
-    enter_Confirmpass = Label(window, text="Confirm Password", font=("TimesNewRoman", 10), fg='grey', bg='black')
+    enter_Confirmpass = Label(window, text="Confirm Password *", font=("TimesNewRoman", 10), fg='grey', bg='black')
     enter_Confirmpass.configure(relief=FLAT)
     enter_Confirmpass_window = canvas.create_window(60, 220, anchor=NW, window=enter_Confirmpass)
 
@@ -200,7 +277,7 @@ def signup(win):
     mEmail_window = canvas.create_window(185, 260, anchor=NW, window=mEmail)
 
     # Enter Email
-    enter_email = Label(window, text="E-mail", font=("TimesNewRoman", 10), fg='grey', bg='black')
+    enter_email = Label(window, text="E-mail *", font=("TimesNewRoman", 10), fg='grey', bg='black')
     enter_email.configure(relief=FLAT)
     enter_email_window = canvas.create_window(60, 260, anchor=NW, window=enter_email)
 

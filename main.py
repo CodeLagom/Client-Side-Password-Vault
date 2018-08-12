@@ -81,6 +81,7 @@ elif res == 'login':
         encrypt_file()
     else:                                                                 #tkinter exit
         print('Failed')
+        encrypt_file()
 else:
     print('Invalid Response')                                            #tkinter exit
 
