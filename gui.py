@@ -121,6 +121,8 @@ def return_signup_username(win,uname,upass,cpass,email,mob):
     f.write(email.get())
     f.close()
     print(mob.get())
+    win.destroy()
+    load_window()
 
 def signuppage(win,uname,upass,cpass,email,mob):
     return_signup_username(win,uname,upass,cpass,email,mob)
