@@ -1,4 +1,4 @@
-#! /usr/bin/bash
+#! /bin/bash
 
 pathv=$(pwd)/$line
 main_t="main.py"
