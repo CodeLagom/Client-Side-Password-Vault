@@ -78,15 +78,20 @@ def submit(win,uname,upass,fromwho):
 
            canvas.pack()
 
+           # Username
+           label_user = Label(window, text="Hello, Username", font=("Hekvetica", 25), fg='White', bg='#2A2A2A')
+           label_user.configure(activebackground="#33B5E5", relief=FLAT)
+           label_user_window = canvas.create_window(125, 50, anchor=NW, window=label_user)
+
            # showlistbutton
            mShow = Button(window, text='DISPLAY THE EXISTING LIST', bg='green',command=lambda: showlist(window))
            mShow.configure(width=23, activebackground="#33B5E5", relief=RAISED)
-           mShow_window = canvas.create_window(160, 100, anchor=NW, window=mShow)
+           mShow_window = canvas.create_window(160, 130, anchor=NW, window=mShow)
 
            # enterlistbutton
            mEnter = Button(window, text="ADD ITEM TO LIST", bg='green',command=lambda: additems(window))
            mEnter.configure(width=23, activebackground="#33B5E5", relief=RAISED)
-           mEnter_window = canvas.create_window(160, 160, anchor=NW, window=mEnter)
+           mEnter_window = canvas.create_window(160, 180, anchor=NW, window=mEnter)
 
            window.mainloop()
        else:
@@ -165,7 +170,13 @@ def showlist(win):
     for item in ["facebook", "twitter", "linkedin", "wordpress", "gmail", "scribbled", "instagram","github", "tix"]:
         listbox.insert(END, item)
 
-    listbox = canvas.create_window(120, 105, anchor=NW, window=listbox)
+    listbox = canvas.create_window(120, 95, anchor=NW, window=listbox)
+
+    # back_button
+
+    mBackButton = Button(window, text='BACK', bg='green')
+    mBackButton.configure(width=15, activebackground="#33B5E5", relief=RAISED)
+    mBackButton_window = canvas.create_window(200, 360, anchor=NW, window=mBackButton)
     window.mainloop()
 
 def forgotpassword():
@@ -302,8 +313,14 @@ def additems(win):
 
     # submit_button
     mButton = Button(window, text='Submit', bg='green', command=dataupdated)
-    mButton.configure(width=14, activebackground="#33B5E5", relief=RAISED)
-    mButton_window = canvas.create_window(190, 280, anchor=NW, window=mButton)
+    mButton.configure(width=11, activebackground="#33B5E5", relief=RAISED)
+    mButton_window = canvas.create_window(160, 280, anchor=NW, window=mButton)
+
+    # back_button
+
+    mBackButton = Button(window, text='BACK', bg='green')
+    mBackButton.configure(width=11, activebackground="#33B5E5", relief=RAISED)
+    mBackButton_window = canvas.create_window(260, 280, anchor=NW, window=mBackButton)
 
     canvas.pack()
     window.mainloop()
