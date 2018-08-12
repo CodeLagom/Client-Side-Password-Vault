@@ -79,7 +79,7 @@ def submit(win,uname,upass,fromwho):
            canvas.pack()
 
            # showlistbutton
-           mShow = Button(window, text='DISPLAY THE EXISTING LIST', bg='green')
+           mShow = Button(window, text='DISPLAY THE EXISTING LIST', bg='green',command=lambda: showlist(window))
            mShow.configure(width=23, activebackground="#33B5E5", relief=RAISED)
            mShow_window = canvas.create_window(160, 100, anchor=NW, window=mShow)
 
@@ -141,6 +141,32 @@ def signuppage(win,uname,upass,cpass,email,mob):
     win.destroy()
     print("Signuppage button pressed")
 
+def showlist(win):
+    win.destroy()
+    print("Show list button pressed")
+    window = Tk()
+    f1 = Frame(window, height=0, width=250)
+    f1.pack()
+    image = Image.open('tkbg.jpg')
+    photo = ImageTk.PhotoImage(image)
+    window.title("Client Side Password Vault")
+    canvas = Canvas(window, width=500, height=400)
+    canvas.create_image(200, 200, image=photo)
+    canvas.pack()
+    #labeltitle
+    label_user = Label(window, text="LIST OF SITES", font=("Hekvetica", 25), fg='White', bg='#2A2A2A')
+    label_user.configure(activebackground="#33B5E5", relief=FLAT)
+    label_user_window = canvas.create_window(130, 30, anchor=NW, window=label_user)
+
+    listbox = Listbox(bd=5, font=("Times", "11", "bold"), bg='#B2B2B2', relief=GROOVE, fg='black', selectborderwidth=3,
+                      highlightcolor='grey',width=30)
+    listbox.pack()
+
+    for item in ["facebook", "twitter", "linkedin", "wordpress", "gmail", "scribbled", "instagram","github", "tix"]:
+        listbox.insert(END, item)
+
+    listbox = canvas.create_window(120, 105, anchor=NW, window=listbox)
+    window.mainloop()
 
 def forgotpassword():
     print("Forgotpassword button pressed")
