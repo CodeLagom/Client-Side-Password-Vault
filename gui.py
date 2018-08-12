@@ -84,7 +84,7 @@ def submit(win,uname,upass,fromwho):
            mShow_window = canvas.create_window(160, 100, anchor=NW, window=mShow)
 
            # enterlistbutton
-           mEnter = Button(window, text="ADD ITEM TO LIST", bg='green')
+           mEnter = Button(window, text="ADD ITEM TO LIST", bg='green',command=lambda: additems(window))
            mEnter.configure(width=23, activebackground="#33B5E5", relief=RAISED)
            mEnter_window = canvas.create_window(160, 160, anchor=NW, window=mEnter)
 
@@ -199,6 +199,8 @@ def otp(canvas,win,mOTP):
 
 ########################################################################################################################
 
+
+
 def load_window():                                                                                                      # method definition to load  our software window
     window=Tk()                                                                                                         # creates a window to work on in tkinter stuff
     image=Image.open('tkbg.jpg')                                                                                        # our image in the directory this program is in
@@ -259,7 +261,55 @@ def load_window():                                                              
     f1.pack()                                                                                                           # better way take approx values , add background image then reduce values till satisfied
     window.mainloop()
                                                                                                                         # keeps window open till not closed by user
+#####################################################################################################################################
 
+def additems(win):
+    win.destroy()
+    print("Add items button pressed")
+    window = Tk()
+    f1 = Frame(window, height=0, width=250)
+    f1.pack()
+    image = Image.open('tkbg.jpg')
+    photo = ImageTk.PhotoImage(image)
+    window.title("Client Side Password Vault")
+    canvas = Canvas(window, width=500, height=400)
+    canvas.create_image(200, 200, image=photo)
+    # Username
+    label_user = Label(window, text="Hello, Username", font=("Hekvetica", 25), fg='White', bg='#2A2A2A')
+    label_user.configure(activebackground="#33B5E5", relief=FLAT)
+    label_user_window = canvas.create_window(125, 120, anchor=NW, window=label_user)
+
+    # Enter Username
+    enter_username = Label(window, text="Email", font=("TimesNewRoman", 10), fg='grey', bg='black')
+    enter_username.configure(relief=FLAT)
+    enter_username_window = canvas.create_window(60, 190, anchor=NW, window=enter_username)
+
+    # Username
+    mUsername = Entry(font=('Helvetika', 10), bg='#d3d3d3')
+    mUsername.configure(relief=FLAT)
+    mUsername_window = canvas.create_window(185, 190, anchor=NW, window=mUsername)
+
+    # Password
+    mPass = Entry(show='*', font=('Helvetika', 10), bg='#d3d3d3')
+    mPass.configure(relief=FLAT)
+    mPass.bind('<Return>', return_pass)
+    mPass_window = canvas.create_window(185, 230, anchor=NW, window=mPass)
+
+    # Enter Pass
+    enter_pass = Label(window, text="Password", font=("TimesNewRoman", 10), fg='grey', bg='black')
+    enter_pass.configure(relief=FLAT)
+    enter_pass_window = canvas.create_window(60, 230, anchor=NW, window=enter_pass)
+
+    # submit_button
+    mButton = Button(window, text='Submit', bg='green', command=dataupdated)
+    mButton.configure(width=14, activebackground="#33B5E5", relief=RAISED)
+    mButton_window = canvas.create_window(190, 280, anchor=NW, window=mButton)
+
+    canvas.pack()
+    window.mainloop()
+
+
+#############################################################################################################################################
 
 def signup(win):
     win.destroy()
@@ -342,7 +392,11 @@ def signup(win):
 
 
     window.mainloop()
+##########################################################################################################################################
+def dataupdated():
+    print("Data has been added")
 
+##########################################################################################################################################s
 
 def otp_win(win):
     win.destroy()
