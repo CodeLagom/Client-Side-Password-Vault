@@ -10,8 +10,13 @@ def return_pass(uname,upass):
     print(uname.get())
     print(upass.get())
 
-def submit(win,uname,upass):
-    return_pass(uname,upass)
+def submit(win,uname,upass,fromwho):
+
+    if fromwho == 'login':
+        return_pass(uname,upass)
+    if fromwho == 'otp':
+        pass
+
     win.destroy()
     print("Submit button pressed")
     window = Tk()
@@ -53,8 +58,7 @@ def verify_otp(mOTP,str2,win):
     str1=mOTP.get()
     if str1 == str2:
         print('Successfully Verified')
-        #####################login_window
-        win.destroy()
+        submit(win=win,uname=' ',upass=' ',fromwho='otp')
     else:
         print('Could Not Verify You')
         exit()
@@ -64,7 +68,7 @@ def send_otp(canvas,win,mOTP,email_id):
     otp = totp.now()
     myotp = str(otp)
     server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-    server.login("pvault190@gmail.com", "<enter-password-here>")
+    server.login("pvault190@gmail.com", "<eneter-password-here>")
     server.sendmail("pvault190@gmail.com", email_id, 'Your OTP is ' + myotp)
     mSubmitOTP = Button(win, text='SUBMIT', bg='green', command=lambda: verify_otp(mOTP,myotp,win))
     mSubmitOTP.configure(width=15, activebackground="#33B5E5", relief=RAISED)
@@ -114,7 +118,7 @@ def load_window():                                                              
     enter_pass_window = canvas.create_window(60,230, anchor=NW, window=enter_pass)
 
     #submit_button                                                                                                      #button widget , here command=submit means when we press this button submit method will be called
-    mButton=Button(window,text='LOGIN',bg='green',command=lambda : submit(window,mUsername,mPass))
+    mButton=Button(window,text='LOGIN',bg='green',command=lambda : submit(window,mUsername,mPass,'login'))
     mButton.configure(width=10, activebackground="#33B5E5", relief=RAISED)
     mButton_window = canvas.create_window(130, 280, anchor=NW, window=mButton)
 
