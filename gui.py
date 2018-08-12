@@ -102,10 +102,15 @@ def submit(win,uname,upass,fromwho):
         label_user.configure(activebackground="#33B5E5", relief=FLAT, width=30)
         label_user_window = canvas.create_window(125, 120, anchor=NW, window=label_user)
         window.mainloop()
+    encrypt_file()
 
 
 
 def return_signup_username(win,uname,upass,cpass,email,mob):
+    f=open('hakuna.txt','r')
+    if f.read() != '':
+        print('cant have mutiple users')
+        exit()
     print(uname.get())
     print(upass.get())
     print(cpass.get())
