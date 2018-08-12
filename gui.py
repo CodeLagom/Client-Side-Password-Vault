@@ -49,22 +49,32 @@ def signuppage(win,uname,upass,cpass,email,mob):
 def forgotpassword():
     print("Forgotpassword button pressed")
 
-def send_otp(email_id):
+def verify_otp(mOTP,str2,win):
+    str1=mOTP.get()
+    if str1 == str2:
+        print('Successfully Verified')
+        #####################login_window
+        win.destroy()
+    else:
+        print('Could Not Verify You')
+        exit()
+
+def send_otp(canvas,win,mOTP,email_id):
     totp = pyotp.TOTP("JBSWY3DPEHPK3PXP")
     otp = totp.now()
     myotp = str(otp)
     server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-    server.login("phantomfive11@gmail.com", "<enter-password-here>")
-    server.sendmail("phantomfive11@gmail.com", email_id, 'Your OTP is ' + myotp)
-    time.sleep(15)
-    otp = ""
+    server.login("pvault190@gmail.com", "<enter-password-here>")
+    server.sendmail("pvault190@gmail.com", email_id, 'Your OTP is ' + myotp)
+    mSubmitOTP = Button(win, text='SUBMIT', bg='green', command=lambda: verify_otp(mOTP,myotp,win))
+    mSubmitOTP.configure(width=15, activebackground="#33B5E5", relief=RAISED)
+    mSubmitOTP_window = canvas.create_window(200, 360, anchor=NW, window=mSubmitOTP)
 
-
-def otp():
+def otp(canvas,win,mOTP):
     print("OTP button pressed")
     f=open('email.txt','r')
     email_id=f.read()
-    send_otp(email_id)
+    send_otp(canvas,win,mOTP,email_id)
 
 ########################################################################################################################
 
@@ -235,6 +245,7 @@ def otp_win(win):
     mOTP_window = canvas.create_window(185, 140, anchor=NW, window=mOTP)
 
     canvas.pack()
+    otp(canvas,window,mOTP)
     window.mainloop()
 
 load_window()
