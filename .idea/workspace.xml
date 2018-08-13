@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d67d067-c8d9-4d5c-9de1-55fae43ad1e1" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Vault.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Vault.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/email.txt" beforeDir="false" afterPath="$PROJECT_DIR$/email.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hakuna.txt" beforeDir="false" afterPath="$PROJECT_DIR$/hakuna.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -101,16 +105,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file leaf-file-name="gui.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/gui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="83" column="58" selection-start-line="83" selection-start-column="58" selection-end-line="83" selection-end-column="58" />
+            <state relative-caret-position="215">
+              <caret line="129" column="10" selection-start-line="129" selection-start-column="10" selection-end-line="129" selection-end-column="10" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
-                <marker date="1534097742622" expanded="true" signature="19401:19577" ph="..." />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../master/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-884" />
           </provider>
         </entry>
       </file>
@@ -126,8 +136,11 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>hello</find>
-      <find>enter em</find>
+      <find />
       <find>pvault</find>
+      <find>additems</find>
+      <find>dataupdated</find>
+      <find>data</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -144,11 +157,12 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-10" />
     <option name="width" value="980" />
     <option name="height" value="1050" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -202,9 +216,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
     </configuration>
     <configuration name="list (2)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Vault" />
@@ -223,9 +234,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
     </configuration>
     <configuration name="list" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Vault" />
@@ -244,9 +252,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
     </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Vault" />
@@ -265,9 +270,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Python.main" />
@@ -298,34 +300,49 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17583893" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.19432624" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3988764" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1785235" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Python Console" order="8" weight="0.32954547" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="right" id="R Packages" order="4" />
+      <window_info anchor="right" id="R Graphics" order="3" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3295082" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Python Console" order="8" weight="0.32954547" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.26264045" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3988764" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="R Graphics" order="3" />
-      <window_info anchor="right" id="R Packages" order="4" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/gui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1411">
+          <caret line="83" column="58" selection-start-line="83" selection-start-column="58" selection-end-line="83" selection-end-column="58" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$USER_HOME$/venv/Vault/Lib/site-packages/bcrypt/__init__.py" />
     <entry file="file://$PROJECT_DIR$/otp.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -337,31 +354,19 @@
     <entry file="file://$PROJECT_DIR$/main.py" />
     <entry file="file://$USER_HOME$/Downloads/list (2).py" />
     <entry file="file://$USER_HOME$/Downloads/list.py" />
-    <entry file="file://$PROJECT_DIR$/../../Client-Side-Password-Vault/list.py">
+    <entry file="file://$USER_HOME$/Client-Side-Password-Vault/list.py" />
+    <entry file="file://$USER_HOME$/Client-Side-Password-Vault/list1.py" />
+    <entry file="file://$PROJECT_DIR$/../master/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../Client-Side-Password-Vault/list1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3672">
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-884" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="83" column="58" selection-start-line="83" selection-start-column="58" selection-end-line="83" selection-end-column="58" />
+        <state relative-caret-position="215">
+          <caret line="129" column="10" selection-start-line="129" selection-start-column="10" selection-end-line="129" selection-end-column="10" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-            <marker date="1534097742622" expanded="true" signature="19401:19577" ph="..." />
           </folding>
         </state>
       </provider>

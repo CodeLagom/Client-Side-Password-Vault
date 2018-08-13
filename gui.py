@@ -55,7 +55,6 @@ def return_pass(uname,upass):
     if f.readline().strip() == hash_n.hexdigest():
         f.close()
         print('You are in')  # tkinter loginpage
-        print('1- enter new item\n 2-see your list ')
         return True
     else:
         encrypt_file()
@@ -79,9 +78,9 @@ def submit(win,uname,upass,fromwho):
            canvas.pack()
 
            # Username
-           label_user = Label(window, text="Hello, Username", font=("Hekvetica", 25), fg='White', bg='#2A2A2A')
+           label_user = Label(window, text="Your Vault", font=("Hekvetica", 25), fg='White', bg='#2A2A2A')
            label_user.configure(activebackground="#33B5E5", relief=FLAT)
-           label_user_window = canvas.create_window(125, 50, anchor=NW, window=label_user)
+           label_user_window = canvas.create_window(170, 50, anchor=NW, window=label_user)
 
            # showlistbutton
            mShow = Button(window, text='DISPLAY THE EXISTING LIST', bg='green',command=lambda: showlist(window))
@@ -95,7 +94,7 @@ def submit(win,uname,upass,fromwho):
 
            window.mainloop()
        else:
-           exit()
+           exit()  #for code safety
     if fromwho == 'otp':
         win.destroy()
         print("Submit button pressed")
@@ -109,12 +108,26 @@ def submit(win,uname,upass,fromwho):
         canvas.create_image(200, 200, image=photo)
 
         canvas.pack()
+
         # Username
-        label_user = Label(window, text="LOGGED IN SUCESSFULLY!", font=("Hekvetica", 10), fg='blue')
-        label_user.configure(activebackground="#33B5E5", relief=FLAT, width=30)
-        label_user_window = canvas.create_window(125, 120, anchor=NW, window=label_user)
+        label_user = Label(window, text="Your Vault", font=("Hekvetica", 25), fg='White', bg='#2A2A2A')
+        label_user.configure(activebackground="#33B5E5", relief=FLAT)
+        label_user_window = canvas.create_window(170, 50, anchor=NW, window=label_user)
+
+        # showlistbutton
+        mShow = Button(window, text='DISPLAY THE EXISTING LIST', bg='green', command=lambda: showlist(window))
+        mShow.configure(width=23, activebackground="#33B5E5", relief=RAISED)
+        mShow_window = canvas.create_window(160, 130, anchor=NW, window=mShow)
+
+        # enterlistbutton
+        mEnter = Button(window, text="ADD ITEM TO LIST", bg='green', command=lambda: additems(window))
+        mEnter.configure(width=23, activebackground="#33B5E5", relief=RAISED)
+        mEnter_window = canvas.create_window(160, 180, anchor=NW, window=mEnter)
+
         window.mainloop()
+
     encrypt_file()
+    exit()
 
 
 
@@ -208,6 +221,21 @@ def otp(canvas,win,mOTP):
     email_id=f.read()
     send_otp(canvas,win,mOTP,email_id)
 
+def dataupdated(service,passwd):
+    serv=service.get()
+    psd=passwd.get()
+    sav="\n"+serv+"\t\t"+psd
+    f=open('hakuna.txt','a')
+    f.write(sav)
+    f.close()
+    service.delete(0,END)
+    passwd.delete(0,END)
+    print("Data has been added")
+
+def back_from_add(win):
+    submit(win=win, uname=' ', upass=' ', fromwho='otp')
+
+
 ########################################################################################################################
 
 
@@ -286,12 +314,12 @@ def additems(win):
     canvas = Canvas(window, width=500, height=400)
     canvas.create_image(200, 200, image=photo)
     # Username
-    label_user = Label(window, text="Hello, Username", font=("Hekvetica", 25), fg='White', bg='#2A2A2A')
+    label_user = Label(window, text="Enter Fields!", font=("Hekvetica", 25), fg='White', bg='#2A2A2A')
     label_user.configure(activebackground="#33B5E5", relief=FLAT)
-    label_user_window = canvas.create_window(125, 120, anchor=NW, window=label_user)
+    label_user_window = canvas.create_window(170, 120, anchor=NW, window=label_user)
 
     # Enter Username
-    enter_username = Label(window, text="Email", font=("TimesNewRoman", 10), fg='grey', bg='black')
+    enter_username = Label(window, text="Service", font=("TimesNewRoman", 10), fg='grey', bg='black')
     enter_username.configure(relief=FLAT)
     enter_username_window = canvas.create_window(60, 190, anchor=NW, window=enter_username)
 
@@ -312,13 +340,13 @@ def additems(win):
     enter_pass_window = canvas.create_window(60, 230, anchor=NW, window=enter_pass)
 
     # submit_button
-    mButton = Button(window, text='Submit', bg='green', command=dataupdated)
+    mButton = Button(window, text='Submit', bg='green', command=lambda :dataupdated(mUsername,mPass))
     mButton.configure(width=11, activebackground="#33B5E5", relief=RAISED)
     mButton_window = canvas.create_window(160, 280, anchor=NW, window=mButton)
 
     # back_button
 
-    mBackButton = Button(window, text='BACK', bg='green')
+    mBackButton = Button(window, text='BACK', bg='green',command=lambda :back_from_add(window))
     mBackButton.configure(width=11, activebackground="#33B5E5", relief=RAISED)
     mBackButton_window = canvas.create_window(260, 280, anchor=NW, window=mBackButton)
 
@@ -410,8 +438,7 @@ def signup(win):
 
     window.mainloop()
 ##########################################################################################################################################
-def dataupdated():
-    print("Data has been added")
+
 
 ##########################################################################################################################################s
 
