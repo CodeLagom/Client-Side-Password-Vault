@@ -235,6 +235,9 @@ def dataupdated(service,passwd):
 def back_from_add(win):
     submit(win=win, uname=' ', upass=' ', fromwho='otp')
 
+def forgot_p(win):
+    open('hakuna.txt','w').close()
+    win.destroy()
 
 ########################################################################################################################
 
@@ -286,7 +289,7 @@ def load_window():                                                              
     mSignupButton_window = canvas.create_window(250, 280, anchor=NW, window=mSignupButton)
 
     # forgotPD_button                                                                                                   #button widget , here command=submit means when we press this button submit method will be called
-    mforgotButton = Button(window, text='Forgot Password?', command= lambda: otp_win(window),fg='White', bg='#2A2A2A')
+    mforgotButton = Button(window, text='Forgot Password?', command= lambda: forgot_p(window),fg='White', bg='#2A2A2A')
     mforgotButton.configure(width=15, activebackground="#33B5E5", relief=FLAT)
     mforgotButton_window = canvas.create_window(130, 320, anchor=NW, window=mforgotButton)
 
