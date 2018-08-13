@@ -63,9 +63,9 @@ if res == 'signup':
     hashin_method(passwd)
 
 elif res == 'login':
-    decrypt_file()
     hash_n=hashlib.sha3_512(input('enter your password').encode('utf-8'))   #pass password from tkinter here
     f=open('hakuna.txt','r')
+    decrypt_file()
     if f.readline().strip() == hash_n.hexdigest():
         f.close()
         print('You are in')                                              #tkinter loginpage
@@ -81,6 +81,7 @@ elif res == 'login':
         encrypt_file()
     else:                                                                 #tkinter exit
         print('Failed')
+        encrypt_file()
 else:
     print('Invalid Response')                                            #tkinter exit
 
