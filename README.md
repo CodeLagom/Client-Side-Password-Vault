@@ -27,7 +27,7 @@ A Password vault with encryption solely on client device without any online data
 
  # For Linux
 
-  - We know you linux fanboys and gals. So Run ```vault.sh``` the first time.
+  - We know you linux fanboys and gals. So Run ```vault.sh``` the first and last time.
   - Now your terminal will recognise the command ``` $ vault ```.
   - You can signup and do everything else from terminal
   - Giving you ample features to loathe on that 90s Windows Counterpart,
