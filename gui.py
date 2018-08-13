@@ -179,8 +179,9 @@ def showlist(win):
     listbox = Listbox(bd=5, font=("Times", "11", "bold"), bg='#B2B2B2', relief=GROOVE, fg='black', selectborderwidth=3,
                       highlightcolor='grey',width=30)
     listbox.pack()
-
-    for item in ["facebook", "twitter", "linkedin", "wordpress", "gmail", "scribbled", "instagram","github", "tix"]:
+    f=open('hakuna.txt','r')
+    items_list=f.readlines()
+    for item in items_list[1:len(items_list)]:
         listbox.insert(END, item)
 
     listbox = canvas.create_window(120, 95, anchor=NW, window=listbox)
@@ -188,7 +189,7 @@ def showlist(win):
     # back_button
 
     mBackButton = Button(window, text='BACK', bg='green')
-    mBackButton.configure(width=15, activebackground="#33B5E5", relief=RAISED)
+    mBackButton.configure(width=15, activebackground="#33B5E5", relief=RAISED,command=lambda:back_from_add(window))
     mBackButton_window = canvas.create_window(200, 360, anchor=NW, window=mBackButton)
     window.mainloop()
 
@@ -224,7 +225,7 @@ def otp(canvas,win,mOTP):
 def dataupdated(service,passwd):
     serv=service.get()
     psd=passwd.get()
-    sav="\n"+serv+"\t\t"+psd
+    sav="\n"+serv+"|-||-|"+psd
     f=open('hakuna.txt','a')
     f.write(sav)
     f.close()
