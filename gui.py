@@ -193,14 +193,13 @@ def showlist(win):
     mBackButton_window = canvas.create_window(200, 360, anchor=NW, window=mBackButton)
     window.mainloop()
 
-def forgotpassword():
-    print("Forgotpassword button pressed")
-
 def verify_otp(mOTP,str2,win):
     str1=mOTP.get()
     if str1 == str2:
         print('Successfully Verified')
+        encrypt_file()
         submit(win=win,uname=' ',upass=' ',fromwho='otp')
+
     else:
         print('Could Not Verify You')
         exit()
@@ -210,7 +209,7 @@ def send_otp(canvas,win,mOTP,email_id):
     otp = totp.now()
     myotp = str(otp)
     server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-    server.login("pvault190@gmail.com", "<eneter-password-here>")
+    server.login("pvault190@gmail.com", "bugsbunny@123")
     server.sendmail("pvault190@gmail.com", email_id, 'Your OTP is ' + myotp)
     mSubmitOTP = Button(win, text='SUBMIT', bg='green', command=lambda: verify_otp(mOTP,myotp,win))
     mSubmitOTP.configure(width=15, activebackground="#33B5E5", relief=RAISED)
@@ -287,7 +286,7 @@ def load_window():                                                              
     mSignupButton_window = canvas.create_window(250, 280, anchor=NW, window=mSignupButton)
 
     # forgotPD_button                                                                                                   #button widget , here command=submit means when we press this button submit method will be called
-    mforgotButton = Button(window, text='Forgot Password?', command=forgotpassword,fg='White', bg='#2A2A2A')
+    mforgotButton = Button(window, text='Forgot Password?', command= lambda: otp_win(window),fg='White', bg='#2A2A2A')
     mforgotButton.configure(width=15, activebackground="#33B5E5", relief=FLAT)
     mforgotButton_window = canvas.create_window(130, 320, anchor=NW, window=mforgotButton)
 
