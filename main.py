@@ -1,7 +1,9 @@
 import hashlib
+import inquirer
+import getpass
 
 def encrypt_file():                                                 #encrypt file method
-    print('this is enc executed')
+    #print('this is enc executed')
     f=open('hakuna.txt','rb')
     texttoenc=f.read()
     f.close()
@@ -14,11 +16,11 @@ def encrypt_file():                                                 #encrypt fil
     f.write(texttoenc)
     #print(texttoenc)
     f.close()
-    print('encryption is done')
+    #print('encryption is done')
 
 
 def decrypt_file():                                                  #decrypt file method
-    print('this is decr executed')
+    #print('this is decr executed')
     f = open('hakuna.txt', 'rb')
     texttoenc = f.read()
     f.close()
@@ -30,7 +32,7 @@ def decrypt_file():                                                  #decrypt fi
     f = open('hakuna.txt', 'wb')
     f.write(texttoenc)
     f.close()
-    print('decryption is done')
+    #print('decryption is done')
 
 
 def hashin_method(passwd):                                           #password hash method
@@ -43,37 +45,40 @@ def hashin_method(passwd):                                           #password h
 
 def enter_new():                                                     #enter items method
     f=open('hakuna.txt','a')
-    print('enter item name: ')
-    nametext=input()
-    print('enter password: ')
-    pss=input()
+    ans = inquirer.prompt([inquirer.Text('ans', message = "Enter your Username (Provide link to the site (if) in brackets to be specific)")]) 
+    nametext = ans['ans']
+    # print('Enter password: ')
+    # pss=input()
+    pss = input("Enter Password: ")
     str_entry='\n'+nametext+'\t\t'+pss
     f.write(str_entry)
     f.close()
-    print('done')
-    print('Add More ?')
-    if input() == 'yes':
+    print('\n \n ~~~Successfully saved your password in the Vault~~~\n\n')
+    an = inquirer.prompt([inquirer.Confirm('ans', message = "Want to Enter new Record ?")]) 
+    if an['ans'] == 'y' or an['ans']== 'Y':
         enter_new()
     else:
         return
 
-res=input('signup or login')                                             #tkinter first page
-if res == 'signup':
-    passwd=input('enter password').encode('utf-8')
+# res=input('signup or login :-') 
+answer = inquirer.prompt([inquirer.List('ans', message = "Do you want to ", choices= ['Login','Signup'])])  #Asking through Inquirer
+res = answer['ans']
+if res == 'Signup':
+    passwd = getpass.getpass('Enter Password: ').encode('utf-8')
     hashin_method(passwd)
 
-elif res == 'login':
-    hash_n=hashlib.sha3_512(input('enter your password').encode('utf-8'))   #pass password from tkinter here
-    f=open('hakuna.txt','r')
+elif res == 'Login':
     decrypt_file()
+    hash_n=hashlib.sha3_512(getpass.getpass('Enter Password: ').encode('utf-8'))   #pass password from tkinter here
+    f=open('hakuna.txt','r')
     if f.readline().strip() == hash_n.hexdigest():
         f.close()
-        print('You are in')                                              #tkinter loginpage
-        print('1- enter new item\n 2-see your list ')
-        resp=input()
-        if resp == '1':                                                  #tkinter enter new item page
+        print('\n ~~~~~~~~~~~~Welcome To Your Vault~~~~~~~~~~~ \n')                                              #tkinter loginpage
+        ans = inquirer.prompt([inquirer.List('ans', message = "You want to ", choices= ['Enter a new entry','View your Passwords'])]) 
+        resp = ans['ans']
+        if resp == 'Enter a new entry':                                                  #tkinter enter new item page
             enter_new()
-        if resp == '2':                                                  #tkinter show list page
+        if resp == 'View your Passwords':                                                  #tkinter show list page
             f=open('hakuna.txt')
             lines=f.readlines()
             for i in range(1,len(lines)):
