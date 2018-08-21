@@ -38,9 +38,22 @@ A Password vault with encryption solely on client device without any online data
     
 # Installation:
 If you are in terminal
+Download or clone the repository
+```
+git clone https://github.com/CodeLagom/Client-Side-Password-Vault.git
+```
+Install all the depencencies
+```
+pip install -r requirements.txt
+```
+Run the script for easy access to the vault 
 ```
 $ ./vault.sh 
 ````
+Run the script from anywhere in the terminal
+```
+vault
+```
 Windows users can also use it in Git Bash
 ```
 Change /bin/bash in vault.sh to /usr/bin/bash or just type 'which bash' and change accordingly.
@@ -49,7 +62,7 @@ Change /bin/bash in vault.sh to /usr/bin/bash or just type 'which bash' and chan
 ### Requirements
 
 - Python 3+
-- PIP or Pillow
+- pip
 
 
 
