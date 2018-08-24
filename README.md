@@ -46,11 +46,11 @@ Install all the depencencies
 ```
 pip install -r requirements.txt
 ```
-Run the script for easy access to the vault 
+Run the script once initially for easy access to the vault 
 ```
 $ ./vault.sh 
 ````
-Run the script from anywhere in the terminal
+Run the script from anywhere in the terminal with command
 ```
 vault
 ```
